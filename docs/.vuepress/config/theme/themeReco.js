@@ -25,7 +25,7 @@ module.exports = {
         link: 'https://guangmujun.github.io'
       },
   ],
-  logo: '/favicon.jpg', 
+  logo: 'https://gitee.com/guangmujun/pictures/raw/master/github_io/favicon.jpg', 
   // 最后更新时间
   lastUpdated: 'Last Updated', // string | boolean
   // 作者

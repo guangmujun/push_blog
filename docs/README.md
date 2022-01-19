@@ -1,11 +1,11 @@
 ---
 home: true
-bgImage: '/banner.jpg'
+bgImage: 'https://gitee.com/guangmujun/pictures/raw/master/github_io//banner.jpg'
 bgImageStyle: {
   height: '450px'
 }
-faceImage: '/head.png'
-heroImage: '/head.jpg'
+faceImage: 'https://gitee.com/guangmujun/pictures/raw/master/github_io//head.png'
+heroImage: 'https://gitee.com/guangmujun/pictures/raw/master/github_io//head.jpg'
 heroImageStyle: {
   maxHeight: '200px',
   display: block,

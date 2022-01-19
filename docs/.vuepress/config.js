@@ -19,7 +19,7 @@ module.exports = {
   description: '成为一个快乐、富有、优秀的人，不以物喜，不以己悲。',
   dest: 'public',
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: 'https://gitee.com/guangmujun/pictures/raw/master/github_io/favicon.jpg' }],
     ['meta', { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge'}],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
@@ -27,7 +27,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel: 'apple-touch-icon', href: '/icon_vuepress_reco.png' }],
-    ['link', { rel: 'mask-icon', href: '/icon_vuepress_reco.svg', color: '#42b983' }],
+    ['link', { rel: 'mask-icon', href: 'https://gitee.com/guangmujun/pictures/raw/master/github_io/icon_vuepress_reco.svg', color: '#42b983' }],
     ['meta', { name: 'msapplication-TileImage', content: '/icon_vuepress_reco.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
