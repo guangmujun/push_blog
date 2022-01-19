@@ -13,26 +13,26 @@ module.exports = {
   },
   friendLink: [
       {
-        title: 'Python七号',
-        desc: '一个值得关注的Python打怪升级的学习号',
-        email: 'somenzz@163.com',
-        link: '/views/python/python_seven.html'
+        title: '广慕君',
+        desc: '成为一个快乐、富有、优秀的人，不以物喜，不以己悲。',
+        email: 'wyh_nanjing@163.com',
+        link: 'https://guangmujun.github.io'
       },
       {
         title: '虚位以待',
         desc: 'A simple and beautiful',
         // avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: '/views/python/python_seven.html'
+        link: 'https://guangmujun.github.io'
       },
   ],
   logo: '/favicon.jpg', 
   // 最后更新时间
   lastUpdated: 'Last Updated', // string | boolean
   // 作者
-  author: 'somenzz',
+  author: '广慕君',
   // 备案号
-  record: 'Python七号',
-  recordLink: '/views/python/python_seven.html',
+  record: '广慕君',
+  recordLink: 'https://guangmujun.github.io',
   // 项目开始时间
-  startYear: '2018'
+  startYear: '2022'
 }

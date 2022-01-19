@@ -1,9 +1,9 @@
 const autometa_options = {
   site: {
-    name: 'somenzz',
-    description: '禅与计算机编程艺术，公众号：Python七号',
+    name: '广慕君',
+    description: '成为一个快乐、富有、优秀的人，不以物喜，不以己悲。',
   },
-  canonical_base: 'https://somenzz.github.io',
+  canonical_base: 'https://guangmujun.github.io',
 };
 
 
@@ -15,8 +15,8 @@ module.exports = {
   //     lang: 'zh-CN'
   //   }
   // },
-  title: "somenzz's blog",
-  description: '禅与计算机编程艺术，公众号：Python七号',
+  title: "个人知识库",
+  description: '成为一个快乐、富有、优秀的人，不以物喜，不以己悲。',
   dest: 'public',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -47,7 +47,7 @@ module.exports = {
     },
     'autometa': autometa_options,
     'sitemap': {
-      hostname: "https://somenzz.github.io",
+      hostname: "https://guangmujun.github.io",
       // 排除无实际内容的页面
       exclude: ["/404.html"]
     },
