@@ -7,7 +7,7 @@ module.exports = Object.assign({}, themeReco, {
   // 搜索设置
   search: true,
   searchMaxSuggestions: 15,
-  authorAvatar: '/profile.png',
+  authorAvatar: 'https://gitee.com/guangmujun/pictures/raw/master/github_io/profile.png',
   // 自动形成侧边导航
   sidebar: 'auto',
   valineConfig: {
