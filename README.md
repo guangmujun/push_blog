@@ -1,5 +1,7 @@
 # blog-template
 
+Test
+
 ## 介绍
 
 基于 VuePress 的静态博客生成器，主题为：[vuepress-theme-reco](https://vuepress-theme-reco.recoluan.com/)
