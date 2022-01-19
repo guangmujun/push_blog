@@ -24,5 +24,5 @@ features:
   details: In a city? On earth? Or in a small part of space?
 - title: What am I gona do？
   details: Work? Struggle? Or go to a destination I don't know?
-footer: 'somenzz'
+footer: '广慕君'
 ---
