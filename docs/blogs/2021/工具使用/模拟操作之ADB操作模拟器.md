@@ -3,13 +3,12 @@ title: ADB操作模拟器
 date: 2021-12-21
 permalink: /adb-phone.html
 tags:
- - ADB
+ - 工具
+ADB
 categories:
  - 工具
 
 ---
-
-# ADB操作模拟器
 
 ## ADB操作
 
