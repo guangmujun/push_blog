@@ -1,5 +1,5 @@
 ---
-title: ADB操作模拟器
+title: 模拟操作：ADB操作模拟器
 date: 2021-12-21
 permalink: /adb-phone.html
 tags:
