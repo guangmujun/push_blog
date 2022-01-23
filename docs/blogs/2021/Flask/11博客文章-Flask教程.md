@@ -21,30 +21,33 @@ categories:
 
 `app/models.py`
 
+ ```python
+     class Post(db.Model):
+ ​        __tablename__ = 'posts'
+ ​        id = db.Column(db.Integer, primary_key=True)
+ ​        body = db.Column(db.Text)
+ ​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+ ​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+ ```
 
-​    
-​    class Post(db.Model):
-​        __tablename__ = 'posts'
-​        id = db.Column(db.Integer, primary_key=True)
-​        body = db.Column(db.Text)
-​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
 
 
 `app/main/forms.py`
 
-
-​    
-​    class PostForm(FlaskForm):
+```python
+  class PostForm(FlaskForm):
 ​        body = TextAreaField('写点什么吧？', validators=[DataRequired()])
 ​        submit = SubmitField('提交')
+```
+
+
 
 
 `app/main/views.py`
 
-
-​    
-​    @main.route('/', methods=['GET', 'POST'])
+```python
+@main.route('/', methods=['GET', 'POST'])
 ​    def index():
 ​        form = PostForm()
 ​        if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
@@ -53,6 +56,9 @@ categories:
 ​            return redirect(url_for('.index'))
 ​        posts = Post.query.order_by(Post.timestamp.desc()).all()
 ​        return render_template('index.html', form=form, posts=posts)
+```
+
+
 
 
 `app/templates/index.html`
@@ -97,15 +103,17 @@ categories:
 
 `app/main/views.py`
 
-
-​    
-​    @main.route('/user/<username>')
+```python
+   @main.route('/user/<username>')
 ​    def user(username):
 ​        user = User.query.filter_by(username=username).first()
 ​        if user is None:
 ​            abort(404)
 ​        posts = user.posts.order_by(Post.timestamp.desc()).all()
 ​        return render_template('user.html', user=user, posts=posts)
+```
+
+
 
 
 `app/templates/user.html`
@@ -181,9 +189,11 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 自动化生成测试数据 ForgeryPy，用于生成虚拟信息 安装
 
+```shell
+  conda install forgerypy
+```
 
-​    
-​    conda install forgerypy
+
 
 
 由于此Python包，只是在开发环境中使用，所以requirements文件需要修改
@@ -196,7 +206,6 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 `dev.txt`内容示例：
 
 
-​    
 ​    -r common.txt
 ​    ForgeryPy==0.1
 
@@ -205,16 +214,17 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 
 ​    
-​    class User(UserMixin, db.Model):
-​        posts = db.relationship('Post', backref='author', lazy='dynamic')           # 文章内容
+
 ​    
-​        @staticmethod
-​        def generate_fake(count=100):
-​            from sqlalchemy.exc import IntegrityError  # 异常：随机生成的邮箱或用户名重复
-​            from random import seed
-​            import forgery_py
-​    
-            seed()
+          ​    class User(UserMixin, db.Model):
+    ​        posts = db.relationship('Post', backref='author', lazy='dynamic')           # 文章内容
+    ​    
+            @staticmethod
+            def generate_fake(count=100):
+                from sqlalchemy.exc import IntegrityError  # 异常：随机生成的邮箱或用户名重复
+                from random import seed
+                import forgery_py
+          seed()
             for i in range(count):
                 u = User(email=forgery_py.internet.email_address(),
                          username=forgery_py.internet.user_name(),
@@ -233,8 +243,8 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 注意要在User中加入posts字段，其在Post中会反向创建`author`的虚拟字段
 
-
-​    
+```python
+    
 ​    class Post(db.Model):
 ​        __tablename__ = 'posts'
 ​        id = db.Column(db.Integer, primary_key=True)
@@ -242,11 +252,15 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 ​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 ​    
-​        @staticmethod
-​        def generate_fake(count=100):
-​            from random import seed, randint  # randint(a, b)生成[a,b]区间内的随机整数
-​            import forgery_py
-​    
+        @staticmethod
+        def generate_fake(count=100):
+            from random import seed, randint  # randint(a, b)生成[a,b]区间内的随机整数
+            import forgery_py
+    
+```
+
+
+
             seed()
             user_count = User.query.count()
             for i in range(count):
@@ -281,21 +295,24 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 解决： `app/manage.py`
 
-
-​    
+```python
+    
 ​    from app.models import User, Role, Post
 ​    
-​    def make_shell_context():
-​        return dict(app=app, db=db, User=User, Role=Role, Post=Post)
+    def make_shell_context():
+        return dict(app=app, db=db, User=User, Role=Role, Post=Post)
+   
+```
+
+
 
 
   2. **faker包**
 
 `app/fake.py`
 
-
-​    
-​    from random import randint
+```python
+  from random import randint
 ​    from sqlalchemy.exc import IntegrityError
 ​    from faker import Faker
 ​    from . import db
@@ -334,10 +351,9 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​                      author=u)
 ​            db.session.add(p)
 ​        db.session.commit()
+```
 
 
-​    
-​    
 
 使用：【运行之前记得迁移和更新数据库】
 
@@ -352,9 +368,8 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 `app/main/views.py`
 
-
-​    
-​    @main.route('/', methods=['GET', 'POST'])
+```python
+  @main.route('/', methods=['GET', 'POST'])
 ​    def index():
 ​        form = PostForm()
 ​        if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
@@ -367,6 +382,9 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​        )                                                                                   # 可选参数error_out，False，超出范围返回空列表
 ​        posts = pagination.items
 ​        return render_template('index.html', form=form, posts=posts, pagination=pagination)
+```
+
+
 
 
 通过http://127.0.0.1:5000/?page=2使用page参数访问分页
@@ -478,21 +496,25 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 安装
 
+```shell
+ conda install flask-pagedown markdown bleach
+```
 
-​    
-​    conda install flask-pagedown markdown bleach
+
 
 
 ### 11.5.1 使用Flask-PageDown
 
 `app/__init__.py`初始化扩展
 
+```python
+ from flask_pagedown import PageDown
+​    
+    pagedown = PageDown()
+```
 
 ​    
-​    from flask_pagedown import PageDown
-​    
-​    pagedown = PageDown()
-​    
+
     def create_app(config_name):
         pagedown.init_app(app)
 
@@ -501,12 +523,12 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 将首页中的多行文本控件转换成Markdown富文本编辑器，修改PostForm中的body字段 `app/main/forms.py`
 
 
-​    
-​    from flask_pagedown.fields import PageDownField
-​    
-​    class PostForm(FlaskForm):
-​        body = PageDownField('写点什么吧？', validators=[DataRequired()])
-​        submit = SubmitField('提交')
+```python    from flask_pagedown.fields import PageDownField
+    
+    class PostForm(FlaskForm):
+        body = PageDownField('写点什么吧？', validators=[DataRequired()])
+        submit = SubmitField('提交')
+```
 
 
 使用`PageDown`库生成Markdown预览 `app/templates/index.html`
@@ -536,19 +558,22 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 
 `app/models.py`
 
+    ```python
+       from markdown import markdown
+    ​    import bleach
+    ​    
+        class Post(db.Model):
+            __tablename__ = 'posts'
+            id = db.Column(db.Integer, primary_key=True)
+            body = db.Column(db.Text)
+            timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+            author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+            body_html = db.Column(db.Text)
+        
+    ```
 
-​    
-​    from markdown import markdown
-​    import bleach
-​    
-​    class Post(db.Model):
-​        __tablename__ = 'posts'
-​        id = db.Column(db.Integer, primary_key=True)
-​        body = db.Column(db.Text)
-​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-​        body_html = db.Column(db.Text)
-​    
+
+
         @staticmethod
         def on_changed_body(target, value, oldvalue, initiator):
             allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
@@ -582,11 +607,16 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 
 `app/main/views.py`
 
-
-​    @main.route('/post/<int:id>')
+```python
+    @main.route('/post/<int:id>')
 ​    def post(id):
 ​        post = Post.query.get_or_404(id)
 ​        return render_template('post.html', posts=[post])
+```
+
+
+
+
 
 
 在_posts.html中加入文章的固定链接 `app/templates/_posts.html`
