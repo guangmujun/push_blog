@@ -1,5 +1,5 @@
 ---
-title: Flask学习之5 数据库
+title: Flask学习之5数据库
 date: 2021-03-14
 permalink: /flask-learning-databse.html
 tags:

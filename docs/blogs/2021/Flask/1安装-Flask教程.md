@@ -1,5 +1,5 @@
 ---
-title: Flask学习之1 安装
+title: Flask学习之1安装
 date: 2021-03-11
 permalink: /flask-learning-install.html
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Flask学习之2 程序的基本结构
+title: Flask学习之2程序的基本结构
 date: 2021-03-11
 permalink: /flask-learning-base-program-structure.html
 tags:

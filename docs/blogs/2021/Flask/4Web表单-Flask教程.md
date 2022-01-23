@@ -1,5 +1,5 @@
 ---
-title: Flask学习之4 Web表单
+title: Flask学习之4Web表单
 date: 2021-03-12
 permalink: /flask-learning-web-form.html
 tags:

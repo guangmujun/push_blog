@@ -1,5 +1,5 @@
 ---
-title: Flask学习之11 博客文章
+title: Flask学习之11博客文章
 date: 2021-03-25
 permalink: /flask-learning-blog-article.html
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Flask学习之7 大型程序的结构
+title: Flask学习之7大型程序的结构
 date: 2021-03-15
 permalink: /flask-learning-large-program-structure.html
 tags:

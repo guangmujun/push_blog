@@ -1,5 +1,5 @@
 ---
-title: Flask学习之6 电子邮件
+title: Flask学习之6电子邮件
 date: 2021-03-15
 permalink: /flask-learning-email.html
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Flask学习之8-1 用户认证：基础功能
+title: Flask学习之8-1用户认证：基础功能
 date: 2021-03-17
 permalink: /flask-learning-assert-user.html
 tags:

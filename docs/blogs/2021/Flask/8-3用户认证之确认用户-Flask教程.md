@@ -1,5 +1,5 @@
 ---
-title: Flask学习之8-3 用户认证：确认用户
+title: Flask学习之8-3用户认证：确认用户
 date: 2021-03-18
 permalink: /flask-learning-make-sure-user.html
 tags:

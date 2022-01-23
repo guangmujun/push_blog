@@ -1,5 +1,5 @@
 ---
-title: Flask学习之8-2 用户认证：注册新用户
+title: Flask学习之8-2用户认证：注册新用户
 date: 2021-03-18
 permalink: /flask-learning-register-new-user.html
 tags:

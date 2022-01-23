@@ -1,5 +1,5 @@
 ---
-title: Flask学习之10 用户资料
+title: Flask学习之10用户资料
 date: 2021-03-24
 permalink: /flask-learning-user-profile.html
 tags:

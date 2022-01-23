@@ -1,5 +1,5 @@
 ---
-title: Flask学习之12 关注者
+title: Flask学习之12关注者
 date: 2021-03-26
 permalink: /flask-learning-follwer.html
 tags:

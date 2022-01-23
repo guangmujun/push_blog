@@ -1,5 +1,5 @@
 ---
-title: Flask学习之3 模板
+title: Flask学习之3模板
 date: 2021-03-11
 permalink: /flask-learning-html-jinjia2.html
 tags:

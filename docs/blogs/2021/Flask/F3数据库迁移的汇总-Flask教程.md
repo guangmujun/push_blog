@@ -1,5 +1,5 @@
 ---
-title: Flask学习之F3 数据库迁移的汇总
+title: Flask学习之F3数据库迁移的汇总
 date: 2021-03-24
 permalink: /flask-learning-database-migrate.html
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Flask学习之F1 环境中导入敏感信息
+title: Flask学习之F1环境中导入敏感信息
 date: 2021-03-14
 permalink: /flask-learning-import-info-from-env.html
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Flask学习之9 用户角色
+title: Flask学习之9用户角色
 date: 2021-03-18
 permalink: /flask-learning-user-role.html
 tags:
