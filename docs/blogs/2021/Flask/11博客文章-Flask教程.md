@@ -58,13 +58,9 @@ categories:
 `app/templates/index.html`
 
 
-​    
-
-​    
-        {% extends "base.html" %}
-        {% import "bootstrap/wtf.html" as wtf %}
+    {% extends "base.html" %}
+    {% import "bootstrap/wtf.html" as wtf %}
     {% block title %}Flasky - 首页{% endblock %}
-    
     {% block page_content %}
     <div class="page_content">
         <div class="page-header">
@@ -150,7 +146,7 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
     </ul>
 
 
-   
+
 
 `app/tempaltes/index.html`
 
@@ -212,12 +208,12 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​    class User(UserMixin, db.Model):
 ​        posts = db.relationship('Post', backref='author', lazy='dynamic')           # 文章内容
 ​    
-        @staticmethod
-        def generate_fake(count=100):
-            from sqlalchemy.exc import IntegrityError  # 异常：随机生成的邮箱或用户名重复
-            from random import seed
-            import forgery_py
-    
+​        @staticmethod
+​        def generate_fake(count=100):
+​            from sqlalchemy.exc import IntegrityError  # 异常：随机生成的邮箱或用户名重复
+​            from random import seed
+​            import forgery_py
+​    
             seed()
             for i in range(count):
                 u = User(email=forgery_py.internet.email_address(),
@@ -246,11 +242,11 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 ​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 ​    
-        @staticmethod
-        def generate_fake(count=100):
-            from random import seed, randint  # randint(a, b)生成[a,b]区间内的随机整数
-            import forgery_py
-    
+​        @staticmethod
+​        def generate_fake(count=100):
+​            from random import seed, randint  # randint(a, b)生成[a,b]区间内的随机整数
+​            import forgery_py
+​    
             seed()
             user_count = User.query.count()
             for i in range(count):
@@ -273,11 +269,14 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 
 遇到的小问题：
 
-
-​    >>> Post.generate_fake(10)
+```shell
+    >>> Post.generate_fake(10)
 ​    >>> Traceback (most recent call last):
 ​      File "<console>", line 1, in <module>
 ​    NameError: name 'Post' is not defined
+```
+
+
 
 
 解决： `app/manage.py`
@@ -286,8 +285,8 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​    
 ​    from app.models import User, Role, Post
 ​    
-    def make_shell_context():
-        return dict(app=app, db=db, User=User, Role=Role, Post=Post)
+​    def make_shell_context():
+​        return dict(app=app, db=db, User=User, Role=Role, Post=Post)
 
 
   2. **faker包**
@@ -492,8 +491,8 @@ Jinjia2提供include()指令，可以使user.html模板中包含_posts.html中�
 ​    
 ​    from flask_pagedown import PageDown
 ​    
-    pagedown = PageDown()
-    
+​    pagedown = PageDown()
+​    
     def create_app(config_name):
         pagedown.init_app(app)
 
@@ -505,9 +504,9 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 ​    
 ​    from flask_pagedown.fields import PageDownField
 ​    
-    class PostForm(FlaskForm):
-        body = PageDownField('写点什么吧？', validators=[DataRequired()])
-        submit = SubmitField('提交')
+​    class PostForm(FlaskForm):
+​        body = PageDownField('写点什么吧？', validators=[DataRequired()])
+​        submit = SubmitField('提交')
 
 
 使用`PageDown`库生成Markdown预览 `app/templates/index.html`
@@ -542,14 +541,14 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 ​    from markdown import markdown
 ​    import bleach
 ​    
-    class Post(db.Model):
-        __tablename__ = 'posts'
-        id = db.Column(db.Integer, primary_key=True)
-        body = db.Column(db.Text)
-        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-        body_html = db.Column(db.Text)
-    
+​    class Post(db.Model):
+​        __tablename__ = 'posts'
+​        id = db.Column(db.Integer, primary_key=True)
+​        body = db.Column(db.Text)
+​        timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+​        body_html = db.Column(db.Text)
+​    
         @staticmethod
         def on_changed_body(target, value, oldvalue, initiator):
             allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
@@ -639,8 +638,8 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 显示markdown文本和预览效果 `app/main/views.py`
 
 
-​    
-​    @main.route('/edit/<int:id>', methods=['GET', 'POST'])
+```python
+    @main.route('/edit/<int:id>', methods=['GET', 'POST'])
 ​    @login_required
 ​    def edit(id):
 ​        post = Post.query.get_or_404(id)
@@ -654,6 +653,9 @@ Flask-PageDown扩展定义了一个PageDownField类，这个类和WTForms中的T
 ​            flash('文章已经更新！')
 ​        form.body.data = post.body
 ​        return render_template('edit_post.html', form=form)
+```
+
+
 
 
 编辑按钮 `app/templates/_posts.html`

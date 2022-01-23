@@ -35,15 +35,15 @@ categories:
 ​        author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 ​        post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
 ​    
-        @staticmethod
-        def on_changed_body(target, value, oldvalue, initiator):
-            allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
-                            'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                            'h1', 'h2', 'h3', 'p']
-            target.body_html = bleach.linkify(bleach.clean(
-                markdown(value, output_format='html'),
-                tags=allowed_tags, strip=True))
-    
+​        @staticmethod
+​        def on_changed_body(target, value, oldvalue, initiator):
+​            allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+​                            'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+​                            'h1', 'h2', 'h3', 'p']
+​            target.body_html = bleach.linkify(bleach.clean(
+​                markdown(value, output_format='html'),
+​                tags=allowed_tags, strip=True))
+​    
     class User(UserMixin, db.Model):
         comments = db.relationship('Comment', backref='author', lazy='dynamic')     # 评论
     
@@ -231,11 +231,13 @@ URL 片段
 
 添加【评论管理】菜单 `app/templates/base.html`
 
-
-​    
-​    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+```html
+  {% if current_user.can(Permission.MODERATE_COMMENTS) %}
 ​    <li><a href="{{ url_for('main.moderate') }}">评论管理</a></li>
 ​    {% endif %}
+```
+
+  
 
 
 `app/main/views.py`
@@ -256,14 +258,9 @@ URL 片段
 
 `app/templates/moderate.html`
 
-
-​    
-  
-​    
     {% extends "base.html" %}
     {% import "_macros.html" as macros %}
     {% block title %}Flasky - 评论管理{% endblock%}
-    
     {% block page_content %}
     <div class="page-header">
         <h1>评论管理</h1>
